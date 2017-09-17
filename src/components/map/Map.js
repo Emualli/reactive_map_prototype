@@ -37,8 +37,9 @@ class Map extends React.Component {
         const { viewport } = this.state
         const mapBoxToken = MapBoxUtils.getMapBoxToken()
         const vehicles = [
-            {name: 'v1', lat: 48.3232, long: 2.25365},
-            {name: 'v2', lat: 48.6565, long: 2.64646}
+            {name: 'Véhicule 1', lat: 48.8756, long: 2.31878},
+            {name: 'Véhicule 2', lat: 48.8156, long: 2.39878},
+            {name: 'Véhicule 3', lat: 48.8356, long: 2.34878}
         ]
 
         return (
@@ -50,14 +51,14 @@ class Map extends React.Component {
                 {...viewport}
                 mapStyle='mapbox://styles/mapbox/dark-v9'>
 
-                {vehicles.forEach((v, i) => {
+                {vehicles.map((v, i) => {
                             return (
                                 <Marker
                                     lat={v.lat}
                                     long={v.long}
-                                    color='#00FF00'
-                                    key={i}
-                                    text={v.name} />
+                                    color='rgb(0, 255, 0)'
+                                    text={v.name}
+                                    key={i}/>
                             )
                         })}
             </MapGL>
