@@ -39,10 +39,12 @@ class Map extends React.Component {
         const vehicles = []
         const latBounds =  [48.8, 48.9]
         const longBounds = [2.22, 2.42]
+        const vehicleTypes = ['Berline', 'Van', 'Luxe', 'Moto']
         for (let i = 0; i < 100; i++) {
+            const vehicleTypeRandomizer = Math.floor(Math.random() * 4)
             const latRandomizer = parseFloat(Math.random().toFixed(6))
             const longRandomizer = parseFloat(Math.random().toFixed(6))
-            vehicles.push({ name: `Véhicule ${i}`,
+            vehicles.push({ name: vehicleTypes[vehicleTypeRandomizer],
                             lat:  latRandomizer * (latBounds[1] - latBounds[0]) + latBounds[0],
                             long: longRandomizer * (longBounds[1] - longBounds[0]) + longBounds[0]
                           })
