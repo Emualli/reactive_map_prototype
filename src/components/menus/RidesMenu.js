@@ -1,8 +1,6 @@
 import React from 'react'
 import './RidesMenu.css'
 
-import Marker from '../map/Marker.js'
-
 export const RideContainer = ({ selectAndTraceRide, id, address_pick_up, address_drop_off }) => (
     <div onClick={selectAndTraceRide} className='singleRide'>{`This is a ride (id: ${id}) from ${address_pick_up.name}`}</div>
 )

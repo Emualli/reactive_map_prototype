@@ -40,7 +40,7 @@ class Map extends React.Component {
         const latBounds =  [48.8, 48.9]
         const longBounds = [2.22, 2.42]
         const vehicleTypes = ['Berline', 'Van', 'Luxe', 'Moto']
-        for (let i = 0; i < 100; i++) {
+        for (let i = 0; i < 200; i++) {
             const vehicleTypeRandomizer = Math.floor(Math.random() * 4)
             const latRandomizer = parseFloat(Math.random().toFixed(6))
             const longRandomizer = parseFloat(Math.random().toFixed(6))
@@ -53,12 +53,11 @@ class Map extends React.Component {
     }
 
     render () {
-        const { selectedRide } = this.props
+        const { selectedRides } = this.props
         const { viewport } = this.state
         const mapBoxToken = MapBoxUtils.getMapBoxToken()
         const vehicles = this._generateFakeVehicles()
 
-        console.log(selectedRide)
         return (
             <MapGL
                 width={this.props.width}
@@ -78,12 +77,21 @@ class Map extends React.Component {
                                     key={i}/>
                             )
                         })}
-                {selectedRide && (
-                    <Marker
-                        lat={selectedRide.address_pick_up.lat}
-                        long={selectedRide.address_pick_up.long}
-                        color='red'
-                        text={selectedRide.id} />
+                {selectedRides && ( selectedRides.map((sr, i) => {
+                        return(
+                            [sr.address_pick_up, sr.address_drop_off].map((a, i) => {
+                                return (
+                                    <Marker
+                                        lat={a.lat}
+                                        long={a.long}
+                                        color='red'
+                                        text={sr.id}
+                                        key={i} />
+                                )
+
+                            })
+                        )
+                    })
                 )}
             </MapGL>
 
