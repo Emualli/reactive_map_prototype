@@ -53,10 +53,12 @@ class Map extends React.Component {
     }
 
     render () {
+        const { selectedRide } = this.props
         const { viewport } = this.state
         const mapBoxToken = MapBoxUtils.getMapBoxToken()
         const vehicles = this._generateFakeVehicles()
 
+        console.log(selectedRide)
         return (
             <MapGL
                 width={this.props.width}
@@ -76,6 +78,13 @@ class Map extends React.Component {
                                     key={i}/>
                             )
                         })}
+                {selectedRide && (
+                    <Marker
+                        lat={selectedRide.address_pick_up.lat}
+                        long={selectedRide.address_pick_up.long}
+                        color='red'
+                        text={selectedRide.id} />
+                )}
             </MapGL>
 
         )}
