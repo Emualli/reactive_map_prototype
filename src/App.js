@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Map from './components/map/Map.js'
 
-class App extends React.Component {
+class App extends Component {
     constructor(props) {
         super(props)
         this.state = {

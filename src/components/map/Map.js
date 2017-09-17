@@ -1,7 +1,7 @@
 import React from 'react'
 import MapGL from 'react-map-gl'
-
 import Marker from './Marker.js'
+
 import MapBoxUtils from '../../utils/api/Mapbox.js'
 import _ from 'lodash'
 
@@ -48,10 +48,21 @@ class Map extends React.Component {
                 onViewportChange={this._onViewportChange}
                 mapboxApiAccessToken={mapBoxToken}
                 {...viewport}
-                mapStyle='mapbox://styles/mapbox/dark-v9' />
+                mapStyle='mapbox://styles/mapbox/dark-v9'>
 
-        )
-    }
+                {vehicles.forEach((v, i) => {
+                            return (
+                                <Marker
+                                    lat={v.lat}
+                                    long={v.long}
+                                    color='#00FF00'
+                                    key={i}
+                                    text={v.name} />
+                            )
+                        })}
+            </MapGL>
+
+        )}
 }
 
 export default Map;
