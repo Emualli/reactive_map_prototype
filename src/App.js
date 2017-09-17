@@ -28,13 +28,16 @@ class App extends Component {
         })
     }
 
+
     render() {
+        const rides = [{id: 1, address_pick_up: {name: '12 rue de rivoli', lat: 48.853656, long: 2.356352}}]
         return (
         <div className="mainApp">
             <Map
                 width={this.state.windowDimensions.width}
                 height={this.state.windowDimensions.height} />
-            <RidesMenu />
+            <RidesMenu
+                rides={rides}/>
         </div>
         );
     }

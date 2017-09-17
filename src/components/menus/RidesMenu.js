@@ -12,9 +12,14 @@ class RidesMenu extends React.Component {
     }
 
     render () {
+        const { rides } = this.props
         return (
             <div className='rideList'>
-                <RideContainer />
+                {rides.map((ride, i) => {
+                    return (
+                        <RideContainer {...ride} key={i} />
+                    )
+                })}
             </div>
         )
     }
