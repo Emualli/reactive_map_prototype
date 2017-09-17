@@ -1,8 +1,8 @@
 import React from 'react'
 import './RidesMenu.css'
 
-export const RideContainer = ({ rideInfo }) => (
-    <div className='singleRide'>This is one single ride</div>
+export const RideContainer = ({ id, address_pick_up }) => (
+    <div className='singleRide'>{`This is a ride (id: ${id}) from ${address_pick_up.name}`}</div>
 )
 
 class RidesMenu extends React.Component {
