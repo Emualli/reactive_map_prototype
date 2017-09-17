@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Map from './components/map/Map.js'
+import RidesMenu from './components/menus/RidesMenu.js'
 
 class App extends Component {
     constructor(props) {
@@ -33,6 +34,7 @@ class App extends Component {
             <Map
                 width={this.state.windowDimensions.width}
                 height={this.state.windowDimensions.height} />
+            <RidesMenu />
         </div>
         );
     }
